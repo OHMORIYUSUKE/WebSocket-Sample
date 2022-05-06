@@ -1,0 +1,12 @@
+version: "3.0"
+
+services:
+  web:
+    build: ./backend
+    container_name: websockets-sample-backend
+    restart: always
+    tty: true
+    volumes:
+      - ./backend/app:/app
+    ports:
+      - 8000:8000
