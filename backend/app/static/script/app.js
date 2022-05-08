@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://localhost:8000/ws");
+var ws = new WebSocket("ws://localhost/ws");
 
 const stalkerMe = document.getElementById('stalkerMe'); 
 const stalkerEnemy = document.getElementById('stalkerEnemy'); 
