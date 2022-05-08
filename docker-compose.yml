@@ -9,32 +9,4 @@ services:
     volumes:
       - ./backend/app:/app
     ports:
-      - 8000:8000
-    
-  db:
-    build: ./db
-    container_name: websockets-sample-db
-    volumes:
-      - ./db/save_data:/var/lib/mysql
-      - ./db/init:/docker-entrypoint-initdb.d
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: fuel_dev
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
-    ports:
-      - 3306:3306
-    
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: websockets-sample-phpmyadmin
-    environment:
-      PMA_ARBITRARY: 1
-      PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: root
-    restart: always
-    ports:
-      - 3030:80
-    depends_on:
-      - db
+      - 80:8000
