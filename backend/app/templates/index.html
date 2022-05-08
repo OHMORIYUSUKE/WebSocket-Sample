@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WebSocket Sample</title>
+	<link href="{{ url_for('static', path='style/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<h1>WebSocket Sample</h1>
+<input type="text" id="location" />
+
+<div id="stalker"></div>
+
+<script
+    type="text/javascript"
+    src="{{ url_for('static', path='script/app.js') }}">
+</script>
+</body>
+</html>
