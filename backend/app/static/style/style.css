@@ -1,14 +1,44 @@
-#stalker {
+#stalkerMe{
+    position: relative;
     pointer-events: none;
-    position: fixed;
     top: -8px;     
     left: -8px; 
     width: 16px;   
     height: 16px;  
-    background: rgb(0, 0, 0);
+    background: blue;
     border-radius: 50%;
     transform: translate(0,0);
-    /* transition: transform 0.2s;   */
-    transition-timing-function: ease-out;
     z-index: 999;
+}
+
+#stalkerEnemy{
+    position: relative;
+    pointer-events: none;
+    top: -8px;     
+    left: -8px; 
+    width: 16px;   
+    height: 16px;  
+    background: red;
+    border-radius: 50%;
+    transform: translate(0,0);
+    z-index: 998;
+}
+
+#field{
+    position:absolute;
+    width: 500px;
+    height: 500px;
+    background-color: aquamarine;
+}
+
+/*  */
+#enemy{
+    width: 16px;   
+    height: 16px;  
+    background: red;
+}
+#me{
+    width: 16px;   
+    height: 16px;  
+    background: blue;
 }

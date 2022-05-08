@@ -2,6 +2,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+import uuid
 
 from notifier import Notifier
 
@@ -17,7 +18,8 @@ notifier = Notifier()
 # HTML
 @app.get("/", response_class=HTMLResponse)
 async def get(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    user_id = str(uuid.uuid4())
+    return templates.TemplateResponse("index.html", {"request": request, "user_id": user_id})
 
 # Websocket用のパス
 @app.websocket("/ws")

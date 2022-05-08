@@ -1,16 +1,29 @@
 var ws = new WebSocket("ws://localhost:8000/ws");
 
-//マウスストーカー用のdivを取得
-const stalker = document.getElementById('stalker'); 
+const stalkerMe = document.getElementById('stalkerMe'); 
+const stalkerEnemy = document.getElementById('stalkerEnemy'); 
 
+// init
+document.getElementById("locationMeX").value = "0";
+document.getElementById("locationMeY").value = "0";
+document.getElementById("locationEnemyX").value = "0";
+document.getElementById("locationEnemyY").value = "0";
+
+// 相手(自分以外)
 ws.onmessage = function(event) {
-let loc = event.data.split(':');
-stalker.style.transform = 'translate(' + loc[0] + 'px, ' + loc[1] + 'px)';
+    let loc = event.data.split(':');
+    // 自分のポインターのみ移動
+    if(loc[2] != document.getElementById("playerId").value){
+        document.getElementById("locationEnemyX").value = loc[0];
+        document.getElementById("locationEnemyY").value = loc[1];
+        stalkerEnemy.style.transform = 'translate(' + loc[0] + 'px, ' + loc[1] + 'px)';
+    }
 };
 
-//上記のdivタグをマウスに追従させる処理
-document.addEventListener('mousemove', function (e) {
-    stalker.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
-    ws.send(e.clientX + ":" + e.clientY);
-    document.getElementById("location").value = e.clientX + ":" + e.clientY;
+// 自分
+document.getElementById("field").addEventListener('mousemove', function (e) {
+    stalkerMe.style.transform = 'translate(' + e.offsetX + 'px, ' + e.offsetY + 'px)';
+    ws.send(e.offsetX + ":" + e.offsetY + ":" + document.getElementById("playerId").value);
+    document.getElementById("locationMeX").value = e.offsetX;
+    document.getElementById("locationMeY").value = e.offsetY;
 });

@@ -8,9 +8,16 @@
 </head>
 <body>
 <h1>WebSocket Sample</h1>
-<input type="text" id="location" />
+<label for="">Player ID <input value="{{ user_id }}" type="text" name="" id="playerId"></label>
+<br>
+<label for="">自分 <span id="me">　</span> X:<input type="text" id="locationMeX" />, Y:<input type="text" id="locationMeY" /></label>
+<br>
+<label for="">相手 <span id="enemy">　</span> X:<input type="text" id="locationEnemyX" />, Y:<input type="text" id="locationEnemyY" /></label>
 
-<div id="stalker"></div>
+<section id="field">
+	<div id="stalkerMe"></div>
+	<div id="stalkerEnemy"></div>
+</section>
 
 <script
     type="text/javascript"
